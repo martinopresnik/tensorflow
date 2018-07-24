@@ -266,7 +266,6 @@ include(highwayhash)
 include(nsync)
 include(protobuf)
 include(re2)
-include(cub)
 include(sqlite)
 include(double_conversion)
 if (tensorflow_BUILD_CC_TESTS)
@@ -313,7 +312,6 @@ set(tensorflow_EXTERNAL_DEPENDENCIES
     protobuf
     eigen
     gemmlowp
-    cub
     fft2d
     re2
     sqlite_copy_headers_to_destination
@@ -335,7 +333,6 @@ include_directories(
     ${jsoncpp_INCLUDE_DIR}
     ${farmhash_INCLUDE_DIR}
     ${highwayhash_INCLUDE_DIR}
-    ${cub_INCLUDE_DIR}
     ${nsync_INCLUDE_DIR}
     ${PROTOBUF_INCLUDE_DIRS}
     ${re2_INCLUDE_DIR}
