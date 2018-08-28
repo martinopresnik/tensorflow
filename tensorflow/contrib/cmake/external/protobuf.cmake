@@ -15,9 +15,9 @@
 
 if (systemlib_PROTOBUF)
   find_package(Protobuf REQUIRED)
-  set(PROTOBUF_INCLUDE_DIRS "/usr/include")
-  set(protobuf_STATIC_LIBRARIES "-lprotobuf")
-  set(PROTOBUF_PROTOC_EXECUTABLE "/usr/bin/protoc")
+  set(PROTOBUF_INCLUDE_DIRS "${CMAKE_INSTALL_PREFIX}/include")
+  set(protobuf_STATIC_LIBRARIES protobuf::libprotobuf protobuf::libprotoc)
+  set(PROTOBUF_PROTOC_EXECUTABLE "${CMAKE_INSTALL_PREFIX}/bin/protoc")
   add_custom_target(protobuf)
 
 else (systemlib_PROTOBUF)
