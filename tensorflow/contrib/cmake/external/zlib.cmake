@@ -13,14 +13,9 @@
 # limitations under the License.
 # ==============================================================================
 if (systemlib_ZLIB)
-  find_package(PkgConfig)
-  pkg_search_module(ZLIB REQUIRED zlib)
-  set(zlib_INCLUDE_DIR ${ZLIB_INCLUDE_DIRS})
-  set(ADD_LINK_DIRECTORY ${ADD_LINK_DIRECTORY} ${ZLIB_LIBRARY_DIRS})
-  set(ADD_CFLAGS ${ADD_CFLAGS} ${ZLIB_CFLAGS_OTHER})
-
   # To meet DEPENDS zlib from other projects.
   # If we hit this line, zlib is already built and installed to the system.
+  find_package(ZLIB)
   add_custom_target(zlib)
   add_custom_target(zlib_copy_headers_to_destination)
 

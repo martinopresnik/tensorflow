@@ -7,10 +7,17 @@ project(tensorflow C CXX)
 # Set C++14 as standard for the whole project
 set(CMAKE_CXX_STANDARD 14)
 
+add_subdirectory("abseil-cpp")
+link_libraries(absl::base absl::synchronization absl::strings)
+
+
 # Actual source is the ../../.. directory
 get_filename_component(tf_contrib_source_dir ${tensorflow_SOURCE_DIR} PATH)
 get_filename_component(tf_tf_source_dir ${tf_contrib_source_dir} PATH)
 get_filename_component(tensorflow_source_dir ${tf_tf_source_dir} PATH)
+
+# TODO: Reconsider this
+set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/")
 
 # [CLEANUP] Not sure if this is needed (copied from Protobuf)
 # CMake policies
@@ -273,6 +280,7 @@ include(protobuf)
 include(re2)
 include(sqlite)
 include(double_conversion)
+include(abseil)
 if (tensorflow_BUILD_CC_TESTS)
   include(googletest)
 endif()

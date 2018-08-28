@@ -13,13 +13,25 @@
 # limitations under the License.
 # ==============================================================================
 if (systemlib_GRPC)
-  find_package(PkgConfig)
-  pkg_search_module(GRPC REQUIRED grpc++)
+  find_package(gRPC)
   set(grpc_INCLUDE_DIRS ${GRPC_INCLUDE_DIRS})
-  set(grpc_STATIC_LIBRARIES "-lgrpc++ -lgrpc")
-  set(GRPC_BUILD /usr/bin)
+  
+  set(grpc_STATIC_LIBRARIES
+	gRPC::address_sorting 
+	gRPC::gpr  
+	gRPC::grpc 
+	gRPC::grpc_cronet 
+	gRPC::grpc_unsecure 
+	gRPC::grpc++ 
+	gRPC::grpc++_cronet 
+	gRPC::grpc++_error_details 
+	gRPC::grpc++_reflection 
+	gRPC::grpc++_unsecure 
+	gRPC::grpc_plugin_support 
+	gRPC::grpcpp_channelz 
+)
+  set(GRPC_BUILD "${CMAKE_INSTALL_PREFIX}/bin")
   add_custom_target(grpc)
-
 else (systemlib_GRPC)
   include (ExternalProject)
   
