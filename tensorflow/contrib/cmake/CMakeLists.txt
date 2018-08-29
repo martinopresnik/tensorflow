@@ -7,9 +7,6 @@ project(tensorflow C CXX)
 # Set C++14 as standard for the whole project
 set(CMAKE_CXX_STANDARD 14)
 
-add_subdirectory("abseil-cpp")
-link_libraries(absl::base absl::synchronization absl::strings)
-
 
 # Actual source is the ../../.. directory
 get_filename_component(tf_contrib_source_dir ${tensorflow_SOURCE_DIR} PATH)
