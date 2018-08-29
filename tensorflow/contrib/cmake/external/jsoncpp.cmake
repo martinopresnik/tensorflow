@@ -22,7 +22,7 @@ if (systemlib_JSONCPP)
 else (systemlib_JSONCPP)
   include (ExternalProject)
   
-  set(jsoncpp_INCLUDE_DIR ${CMAKE_CURRENT_BINARY_DIR}/jsoncpp/src/jsoncpp)
+  set(jsoncpp_INCLUDE_DIR ${CMAKE_CURRENT_BINARY_DIR}/jsoncpp/src/jsoncpp/include)
   #set(jsoncpp_EXTRA_INCLUDE_DIR ${CMAKE_CURRENT_BINARY_DIR}/jsoncpp/src)
   set(jsoncpp_URL https://github.com/open-source-parsers/jsoncpp.git)
   set(jsoncpp_TAG 4356d9b)
