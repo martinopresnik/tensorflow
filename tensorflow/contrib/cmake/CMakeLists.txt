@@ -228,6 +228,7 @@ endif()
 
 if (tensorflow_OPTIMIZE_FOR_NATIVE_ARCH)
   include(CheckCXXCompilerFlag)
+  #CHECK_CXX_COMPILER_FLAG("-march=x86-64" COMPILER_OPT_ARCH_NATIVE_SUPPORTED)
   CHECK_CXX_COMPILER_FLAG("-march=native" COMPILER_OPT_ARCH_NATIVE_SUPPORTED)
   if (COMPILER_OPT_ARCH_NATIVE_SUPPORTED)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
@@ -299,6 +300,7 @@ set(tensorflow_EXTERNAL_LIBRARIES
     ${sqlite_STATIC_LIBRARIES}
     ${double_conversion_STATIC_LIBRARIES}
 )
+include(abseil_cpp)
 
 if (systemlib_ZLIB)
   set(tensorflow_EXTERNAL_LIBRARIES ${tensorflow_EXTERNAL_LIBRARIES}
@@ -424,7 +426,7 @@ if (tensorflow_ENABLE_GPU)
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/cuda/compatibility_test.cc
     CMAKE_FLAGS -DINCLUDE_DIRECTORIES=${CUDA_INCLUDE_DIRS})
   if(NOT (CUDA_TEST_COMPILE_C AND CUDA_TEST_COMPILE_CXX))
-    message(FATAL_ERROR "Selected compiler (or version) is not supported for CUDA")
+    message(WARNING "Selected compiler (or version) is not supported for CUDA")
   endif()
 
   # by default we assume compute cabability 3.5 and 5.2. If you change this change it in

@@ -31,7 +31,24 @@ if (systemlib_GRPC)
 	gRPC::grpcpp_channelz 
 )
   set(GRPC_BUILD "${CMAKE_INSTALL_PREFIX}/bin")
-  add_custom_target(grpc)
+  add_library(grpc INTERFACE)
+  
+  target_link_libraries(grpc
+    INTERFACE
+	gRPC::address_sorting 
+	gRPC::gpr  
+	gRPC::grpc 
+	gRPC::grpc_cronet 
+	gRPC::grpc_unsecure 
+	gRPC::grpc++ 
+	gRPC::grpc++_cronet 
+	gRPC::grpc++_error_details 
+	gRPC::grpc++_reflection 
+	gRPC::grpc++_unsecure 
+	gRPC::grpc_plugin_support 
+	gRPC::grpcpp_channelz 
+	)
+
 else (systemlib_GRPC)
   include (ExternalProject)
   
