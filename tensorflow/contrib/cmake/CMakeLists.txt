@@ -7,6 +7,7 @@ project(tensorflow C CXX)
 # Set C++14 as standard for the whole project
 set(CMAKE_CXX_STANDARD 14)
 
+link_directories(${CMAKE_INSTALL_PREFIX}/lib)
 
 # Actual source is the ../../.. directory
 get_filename_component(tf_contrib_source_dir ${tensorflow_SOURCE_DIR} PATH)
@@ -301,6 +302,9 @@ set(tensorflow_EXTERNAL_LIBRARIES
     ${double_conversion_STATIC_LIBRARIES}
 )
 include(abseil_cpp)
+if(${tensorflow_ENABLE_GPU})
+    include(cub)
+endif()
 
 if (systemlib_ZLIB)
   set(tensorflow_EXTERNAL_LIBRARIES ${tensorflow_EXTERNAL_LIBRARIES}
