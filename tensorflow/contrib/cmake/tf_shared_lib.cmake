@@ -104,7 +104,7 @@ target_include_directories(tensorflow PUBLIC
     $<INSTALL_INTERFACE:include/>)
 
 install(TARGETS 
-        tensorflow tf_protos_cc 
+        tensorflow tf_protos_cc ${tf_core_gpu_kernels_lib}
         EXPORT tensorflow_export
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
