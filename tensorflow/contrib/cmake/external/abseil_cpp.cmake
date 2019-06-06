@@ -14,7 +14,7 @@
 # ==============================================================================
 # Get all propreties that cmake supports
 
-add_compile_definitions(TENSORFLOW_USE_ABSL)
+add_definitions(-DTENSORFLOW_USE_ABSL)
 if (systemlib_ABSEIL_CPP)
 
   find_package(absl REQUIRED
